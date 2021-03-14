@@ -10,6 +10,11 @@
       "StackName": "amplify-jiradeps-dev-85700",
       "StackId": "arn:aws:cloudformation:eu-west-1:883616946660:stack/amplify-jiradeps-dev-85700/dc8229c0-849a-11eb-ad41-066046fd59ad",
       "AmplifyAppId": "d2z8teqd9z52pt"
+    },
+    "categories": {
+      "auth": {
+        "jiradeps044e4bae": {}
+      }
     }
   }
 }
