@@ -7,6 +7,7 @@ export const getIssue = /* GraphQL */ `
       id
       name
       description
+      image
       createdAt
       updatedAt
     }
@@ -23,6 +24,7 @@ export const listIssues = /* GraphQL */ `
         id
         name
         description
+        image
         createdAt
         updatedAt
       }

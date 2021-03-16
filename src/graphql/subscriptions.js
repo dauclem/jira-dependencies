@@ -7,6 +7,7 @@ export const onCreateIssue = /* GraphQL */ `
       id
       name
       description
+      image
       createdAt
       updatedAt
     }
@@ -18,6 +19,7 @@ export const onUpdateIssue = /* GraphQL */ `
       id
       name
       description
+      image
       createdAt
       updatedAt
     }
@@ -29,6 +31,7 @@ export const onDeleteIssue = /* GraphQL */ `
       id
       name
       description
+      image
       createdAt
       updatedAt
     }
