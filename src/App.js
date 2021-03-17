@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { API, Storage } from 'aws-amplify';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import { Auth, Hub, API, Storage } from 'aws-amplify';
+import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listIssues } from './graphql/queries';
 import { createIssue as createIssueMutation, deleteIssue as deleteIssueMutation } from './graphql/mutations';
 
 const initialFormState = { name: '', description: '' }
 
 function App() {
+  const [user, updateUser] = React.useState(null);
   const [issues, setIssues] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
   useEffect(() => {
-    fetchIssues();
+    Auth.currentAuthenticatedUser()
+      .then(user => updateUser(user))
+      .catch(() => console.log('No signed in user.'));
+    Hub.listen('auth', data => {
+      switch (data.payload.event) {
+        case 'signIn':
+          return updateUser(data.payload.data);
+        case 'signOut':
+          return updateUser(null);
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchIssues();
+    }
+  }, [user]);
 
   async function fetchIssues() {
     const apiData = await API.graphql({ query: listIssues });
@@ -53,6 +70,21 @@ function App() {
     fetchIssues();
   }
 
+  if (!user) {
+    return (
+      <AmplifyAuthenticator>
+        <AmplifySignUp
+          slot="sign-up"
+          formFields={[
+            { type: "email" },
+            { type: "password" },
+          ]}
+          usernameAlias="email"
+        />
+      </AmplifyAuthenticator>
+    );
+  }
+
   return (
     <div className="App">
       <h1>My Issues App</h1>
@@ -88,6 +120,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App, {
-  usernameAlias: 'email',
-});
+export default App;
