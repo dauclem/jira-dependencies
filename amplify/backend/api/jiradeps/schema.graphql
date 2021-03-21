@@ -4,3 +4,7 @@ type Issue @model {
   description: String
   image: String
 }
+
+type Query {
+  jiradepsJiraCall(url: String user: String password: String): String! @function(name: "jiradepsJiraCall-${env}")
+}
