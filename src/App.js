@@ -4,6 +4,7 @@ import { Auth, Hub, API, Storage } from 'aws-amplify';
 import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listIssues } from './graphql/queries';
 import { createIssue as createIssueMutation, deleteIssue as deleteIssueMutation } from './graphql/mutations';
+import getBoardIssue from './services/jira/jira';
 
 const initialFormState = { name: '', description: '' }
 
@@ -22,6 +23,7 @@ function App() {
           return updateUser(data.payload.data);
         case 'signOut':
           return updateUser(null);
+        default:
       }
     });
   }, []);
@@ -84,6 +86,8 @@ function App() {
       </AmplifyAuthenticator>
     );
   }
+
+  getBoardIssue();
 
   return (
     <div className="App">

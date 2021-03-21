@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "jiradeps044e4bae": {}
+      },
+      "function": {
+        "jiradepsJiraCall": {
+          "deploymentBucketName": "amplify-jiradeps-dev-85700-deployment",
+          "s3Key": "amplify-builds/jiradepsJiraCall-4c52647364516a644f4d-build.zip"
+        }
       }
     }
   }
