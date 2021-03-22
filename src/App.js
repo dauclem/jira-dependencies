@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Auth, Hub, API, Storage } from 'aws-amplify';
-import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react';
 import { listIssues } from './graphql/queries';
 import { createIssue as createIssueMutation, deleteIssue as deleteIssueMutation } from './graphql/mutations';
 import getBoardIssue from './services/jira/jira';
@@ -75,6 +75,13 @@ function App() {
   if (!user) {
     return (
       <AmplifyAuthenticator>
+        <AmplifySignIn 
+          slot="sign-in"
+          formFields={[
+            { type: "email" },
+            { type: "password" },
+          ]}
+        />
         <AmplifySignUp
           slot="sign-up"
           formFields={[
