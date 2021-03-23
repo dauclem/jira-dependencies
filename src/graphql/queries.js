@@ -37,3 +37,36 @@ export const listIssues = /* GraphQL */ `
     }
   }
 `;
+export const getBoard = /* GraphQL */ `
+  query GetBoard($id: ID!) {
+    getBoard(id: $id) {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listBoards = /* GraphQL */ `
+  query ListBoards(
+    $filter: ModelBoardFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBoards(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        host
+        user
+        password
+        jiraBoardId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

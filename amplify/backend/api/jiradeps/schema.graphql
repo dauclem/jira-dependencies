@@ -5,6 +5,14 @@ type Issue @model {
   image: String
 }
 
+type Board @model {
+  id: ID!
+  host: String
+  user: String
+  password: String
+  jiraBoardId: Int
+}
+
 type Query {
   jiradepsJiraCall(url: String user: String password: String): String! @function(name: "jiradepsJiraCall-${env}")
 }

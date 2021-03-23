@@ -37,3 +37,42 @@ export const onDeleteIssue = /* GraphQL */ `
     }
   }
 `;
+export const onCreateBoard = /* GraphQL */ `
+  subscription OnCreateBoard {
+    onCreateBoard {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateBoard = /* GraphQL */ `
+  subscription OnUpdateBoard {
+    onUpdateBoard {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBoard = /* GraphQL */ `
+  subscription OnDeleteBoard {
+    onDeleteBoard {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;

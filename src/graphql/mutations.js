@@ -46,3 +46,51 @@ export const deleteIssue = /* GraphQL */ `
     }
   }
 `;
+export const createBoard = /* GraphQL */ `
+  mutation CreateBoard(
+    $input: CreateBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    createBoard(input: $input, condition: $condition) {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateBoard = /* GraphQL */ `
+  mutation UpdateBoard(
+    $input: UpdateBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    updateBoard(input: $input, condition: $condition) {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteBoard = /* GraphQL */ `
+  mutation DeleteBoard(
+    $input: DeleteBoardInput!
+    $condition: ModelBoardConditionInput
+  ) {
+    deleteBoard(input: $input, condition: $condition) {
+      id
+      host
+      user
+      password
+      jiraBoardId
+      createdAt
+      updatedAt
+    }
+  }
+`;
