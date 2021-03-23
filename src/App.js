@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { Auth, Hub } from 'aws-amplify';
 import { AmplifyAuthenticator, AmplifySignUp, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react';
+import { Board } from './components/Board/Board';
 import { BoardForm } from './components/Board/BoardForm/BoardForm';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [user, updateUser] = React.useState(null);
@@ -45,10 +47,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <BoardForm/>
-      <AmplifySignOut />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <BoardForm/>
+          </Route>
+          <Route path="/board/:boardId">
+            <Board />
+          </Route>
+        </Switch>
+        <AmplifySignOut />
+      </div>
+    </Router>
   );
 }
 
