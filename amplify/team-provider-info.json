@@ -18,7 +18,7 @@
       "function": {
         "jiradepsJiraCall": {
           "deploymentBucketName": "amplify-jiradeps-dev-85700-deployment",
-          "s3Key": "amplify-builds/jiradepsJiraCall-4c52647364516a644f4d-build.zip"
+          "s3Key": "amplify-builds/jiradepsJiraCall-58656d4d6f492b6b5678-build.zip"
         }
       }
     }

@@ -16,7 +16,7 @@ function downloadPage(options) {
 exports.handler = async (event) => {
     const options = {
         method: 'GET',
-        url: event.arguments.url, 
+        url: `${event.arguments.url}?fields=key&maxResults=5000`, 
         auth: { username: event.arguments.user, password: event.arguments.password },
         headers: {
         'Accept': 'application/json'
